@@ -24,7 +24,6 @@ USE WideWorldImporters
 Таблицы: Warehouse.StockItems.
 */
 
-напишите здесь свое решение
 
 Select SI.StockItemID  from Warehouse.StockItems as SI
 where StockItemName like '%urgent%' or LEFT(StockItemName,6)='Animal'
@@ -51,7 +50,6 @@ StockItemID
 По каким колонкам делать JOIN подумайте самостоятельно.
 */
 
-напишите здесь свое решение
 
 with PS as (
 Select t1.SupplierID,t1.SupplierName, count(t2.PurchaseOrderID) as [кол-во заказов] from Purchasing.Suppliers as t1
@@ -84,11 +82,28 @@ where [кол-во заказов] = 0
 Таблицы: Sales.Orders, Sales.OrderLines, Sales.Customers.
 */
 
-напишите здесь свое решение
+
+--переделал запрос без cte
 
 
-
-with AAP as (
+Select 
+t1.OrderID,
+convert(nvarchar,t1.OrderDate, 103) as OrderDate,
+datename(month,t1.OrderDate) as [Месяц],
+Datepart(QUARTER,t1.OrderDate) as [Квартал], 
+case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
+when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
+when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
+ else 'Error' end as [1/3 Года],
+t3.CustomerName 
+from  Sales.Orders as t1 
+left join Sales.OrderLines as t2 
+on
+t1.OrderID=t2.OrderID
+left join  Sales.Customers as t3
+on
+t1.CustomerID=t3.CustomerID
+right join (
 Select 
 t1.OrderID,t2.UnitPrice,t2.Quantity,t2.PickingCompletedWhen from Sales.Orders as t1
 left join Sales.OrderLines as t2 
@@ -97,56 +112,22 @@ t1.OrderID=t2.OrderID
 left join  Sales.Customers as t3
 on
 t1.CustomerID=t3.CustomerID
-where t1.PickingCompletedWhen is not null and t2.UnitPrice > 100 or t2.Quantity > 20)
-Select --row_number() OVER (ORDER BY t1.OrderId) as nom,
-t1.OrderID,
-t1.OrderDate,
-Datepart(month,t1.OrderDate) as [Месяц],
-Datepart(QUARTER,t1.OrderDate) as [Квартал], 
-case when Datepart(month,t1.OrderDate) = 1 then 1
-when Datepart(month,t1.OrderDate) = 2 then 1
-when Datepart(month,t1.OrderDate) = 3 then 1 
-when Datepart(month,t1.OrderDate) = 4 then 1 
-when Datepart(month,t1.OrderDate) = 5 then 2 
-when Datepart(month,t1.OrderDate) = 6 then 2 
-when Datepart(month,t1.OrderDate) = 7 then 2 
-when Datepart(month,t1.OrderDate) = 8 then 2 
-when Datepart(month,t1.OrderDate) = 9 then 3 
-when Datepart(month,t1.OrderDate) = 10 then 3 
-when Datepart(month,t1.OrderDate) = 11 then 3 
-when Datepart(month,t1.OrderDate) = 12 then 3 else 'Error' end as [1/3 Года],--увы, но иначе, как решить данный вопрос мне неведома.
-t3.CustomerName --INTO #TEST_2 
-from  Sales.Orders as t1 
-left join Sales.OrderLines as t2 
-on
-t1.OrderID=t2.OrderID
-left join  Sales.Customers as t3
-on
-t1.CustomerID=t3.CustomerID
-right join AAP as t4
+where (t2.UnitPrice > 100 or t2.Quantity > 20) and t1.PickingCompletedWhen is not null ) as t4
 on
 t1.OrderID=t4.OrderID
 order by
---row_number() OVER (ORDER BY t1.OrderId) asc,
 Datepart(QUARTER,t1.OrderDate) asc,
-case when Datepart(month,t1.OrderDate) = 1 then 1
-when Datepart(month,t1.OrderDate) = 2 then 1
-when Datepart(month,t1.OrderDate) = 3 then 1 
-when Datepart(month,t1.OrderDate) = 4 then 1 
-when Datepart(month,t1.OrderDate) = 5 then 2 
-when Datepart(month,t1.OrderDate) = 6 then 2 
-when Datepart(month,t1.OrderDate) = 7 then 2 
-when Datepart(month,t1.OrderDate) = 8 then 2 
-when Datepart(month,t1.OrderDate) = 9 then 3 
-when Datepart(month,t1.OrderDate) = 10 then 3 
-when Datepart(month,t1.OrderDate) = 11 then 3 
-when Datepart(month,t1.OrderDate) = 12 then 3 else 'Error' end asc,
+case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
+when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
+when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
+ else 'Error' end asc,
 t1.OrderDate asc
 
 
 
 
 --Вариант 2(второй пункт подзадания)
+drop table if exists #TEST_2; 
 
 with AAP as (
 Select 
@@ -160,21 +141,13 @@ t1.CustomerID=t3.CustomerID
 where t1.PickingCompletedWhen is not null and t2.UnitPrice > 100 or t2.Quantity > 20)
 Select row_number() OVER (ORDER BY t1.OrderId) as nom,
 t1.OrderID,
-t1.OrderDate,
-Datepart(month,t1.OrderDate) as [Месяц],
+convert(nvarchar,t1.OrderDate, 103) as OrderDate,
+datename(month,t1.OrderDate) as [Месяц],
 Datepart(QUARTER,t1.OrderDate) as [Квартал], 
-case when Datepart(month,t1.OrderDate) = 1 then 1
-when Datepart(month,t1.OrderDate) = 2 then 1
-when Datepart(month,t1.OrderDate) = 3 then 1 
-when Datepart(month,t1.OrderDate) = 4 then 1 
-when Datepart(month,t1.OrderDate) = 5 then 2 
-when Datepart(month,t1.OrderDate) = 6 then 2 
-when Datepart(month,t1.OrderDate) = 7 then 2 
-when Datepart(month,t1.OrderDate) = 8 then 2 
-when Datepart(month,t1.OrderDate) = 9 then 3 
-when Datepart(month,t1.OrderDate) = 10 then 3 
-when Datepart(month,t1.OrderDate) = 11 then 3 
-when Datepart(month,t1.OrderDate) = 12 then 3 else 'Error' end as [1/3 Года],--увы, но иначе, как решить данный вопрос мне неведома.
+case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
+when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
+when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
+ else 'Error' end as [1/3 Года],--увы, но иначе, как решить данный вопрос мне неведома.
 t3.CustomerName INTO #TEST_2 
 from  Sales.Orders as t1 
 left join Sales.OrderLines as t2 
@@ -189,18 +162,10 @@ t1.OrderID=t4.OrderID
 order by
 row_number() OVER (ORDER BY t1.OrderId) asc,
 Datepart(QUARTER,t1.OrderDate) asc,
-case when Datepart(month,t1.OrderDate) = 1 then 1
-when Datepart(month,t1.OrderDate) = 2 then 1
-when Datepart(month,t1.OrderDate) = 3 then 1 
-when Datepart(month,t1.OrderDate) = 4 then 1 
-when Datepart(month,t1.OrderDate) = 5 then 2 
-when Datepart(month,t1.OrderDate) = 6 then 2 
-when Datepart(month,t1.OrderDate) = 7 then 2 
-when Datepart(month,t1.OrderDate) = 8 then 2 
-when Datepart(month,t1.OrderDate) = 9 then 3 
-when Datepart(month,t1.OrderDate) = 10 then 3 
-when Datepart(month,t1.OrderDate) = 11 then 3 
-when Datepart(month,t1.OrderDate) = 12 then 3 else 'Error' end asc,
+case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
+when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
+when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
+ else 'Error' end asc,
 t1.OrderDate asc
 
 
@@ -229,7 +194,7 @@ OrderDate ASC,
 Таблицы: Purchasing.Suppliers, Purchasing.PurchaseOrders, Application.DeliveryMethods, Application.People.
 */
 
-напишите здесь свое решение
+
 
 --select t1.name,t2.name from sys.all_columns as t1
 --left join sys.all_objects as t2
@@ -265,23 +230,27 @@ t2.ExpectedDeliveryDate asc
 Сделать без подзапросов.
 */
 
-напишите здесь свое решение
 --Имя коиента CustomerName
 --Имя сотрудника SalespersonPerson
 
---Чувствую, что у меня проблема, я не понимаю как сделать задание (не зная в каких таблицах лежит информация и какой у них ключ соединения)
---Задание не сделал.
 
-select t1.name,t2.name from sys.all_columns as t1
-left join sys.all_objects as t2
+Select top 10 t1.InvoiceID, t2.CustomerName , t4.FullName  from Sales.Invoices as t1
+left join Sales.Customers as t2 
 on
-t1.object_id=t2.object_id
-where t1.name like '%SalespersonPerson%'
+t1.CustomerID=t2.CustomerID
+left join Sales.Orders as t3
+on
+t1.OrderID=t3.OrderID
+left join Application.People as t4
+on t2.PrimaryContactPersonID=t4.PersonID
+group by
+t2.CustomerName, t4.FullName,t1.InvoiceID
+order by
+min(t3.OrderDate) DESC
 
-Select * from Sales.Orders
-Select * from Sales.Invoices
-Select * from Sales.InvoiceLines
-Select * from Sales.Customers
+
+
+
 
 /*
 6. Все ид и имена клиентов и их контактные телефоны,
@@ -289,8 +258,20 @@ Select * from Sales.Customers
 Имя товара смотреть в таблице Warehouse.StockItems.
 */
 
-напишите здесь свое решение
+--select * from Sales.Customers
+--select * from Warehouse.StockItems -- тут лежит товар
+--select * from Application.People -- тут то, что нужно вытащить по условию
+--select * from Sales.Invoices -- ID покупки и OrderID
+--select * from sales.OrderLines -- nen OrderID + StockItemId чтобы связаться с Warehouse.StockItems
 
---Не понимаю от чего отталкиваться при решении, когда известны не все источники данных. 
-
-
+Select distinct t1.PersonID, t1.FullName, t1.PhoneNumber from Application.People as t1
+left join Sales.Invoices as t2
+on
+t1.PersonID=t2.ContactPersonID
+left join sales.OrderLines as t3
+on
+t2.OrderID=t3.OrderID
+left join Warehouse.StockItems as t4
+on
+t3.StockItemID=t4.StockItemID
+where t4.StockItemName = 'Chocolate frogs 250g'
