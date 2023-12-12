@@ -82,101 +82,82 @@ where [кол-во заказов] = 0
 Таблицы: Sales.Orders, Sales.OrderLines, Sales.Customers.
 */
 
-
---переделал запрос без cte
-
+--проблема "задвойки заказа, точнее затройка" в итоговом ответе, появляется она из таблицы Sales.OrderLines, так как под условия подпадают 3 товара находящиеся в заказе. Ищем решение.... 
+Select * from Sales.Orders --тут заказы
+where CustomerID = 105 and orderID = 47
+Select * from Sales.OrderLines --тут цена тоавара
+where orderID = 47
+Select * from Sales.Customers
+where CustomerID = 105
+--------------------------
+--Само решение по заданию №3
 
 Select 
-t1.OrderID,
+distinct t1.OrderID,
 convert(nvarchar,t1.OrderDate, 103) as OrderDate,
 datename(month,t1.OrderDate) as [Месяц],
 Datepart(QUARTER,t1.OrderDate) as [Квартал], 
 case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
 when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
-when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
- else 'Error' end as [1/3 Года],
+when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 else 'Error' end as [1/3 Года],
 t3.CustomerName 
 from  Sales.Orders as t1 
-left join Sales.OrderLines as t2 
+right join Sales.OrderLines as t2 
 on
 t1.OrderID=t2.OrderID
-left join  Sales.Customers as t3
+inner join Sales.Customers as t3
 on
-t1.CustomerID=t3.CustomerID
-right join (
-Select 
-t1.OrderID,t2.UnitPrice,t2.Quantity,t2.PickingCompletedWhen from Sales.Orders as t1
-left join Sales.OrderLines as t2 
-on
-t1.OrderID=t2.OrderID
-left join  Sales.Customers as t3
-on
-t1.CustomerID=t3.CustomerID
-where (t2.UnitPrice > 100 or t2.Quantity > 20) and t1.PickingCompletedWhen is not null ) as t4
-on
-t1.OrderID=t4.OrderID
+t1.CustomerID=t3.CustomerID 
+where (t2.UnitPrice > 100 or t2.Quantity > 20) and t1.PickingCompletedWhen is not null
 order by
+t1.OrderID,
+convert(nvarchar,t1.OrderDate, 103) asc,
+datename(month,t1.OrderDate),
 Datepart(QUARTER,t1.OrderDate) asc,
 case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
 when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
 when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
- else 'Error' end asc,
-t1.OrderDate asc
+else 'Error' end asc
+
+--проблема с задвойками заказов по вышеуказанной причине решена (проверяя все элементы тыблицы Sales.OrderLines на удовлетворение 
+--условию where (t2.UnitPrice > 100 or t2.Quantity > 20) and t1.PickingCompletedWhen is not null автоматически приводит к задвойке.
+--Данная проблема решается distinct, я ставлю уникальность в разерез OrderID , все остальное подтягивается релевантное. 
+
+--Вариант запроса 2 (с постраничной выборкой)
 
 
+Declare 
+@pagesize bigint = 100,
+@pagenum bigint = 11
 
-
---Вариант 2(второй пункт подзадания)
-drop table if exists #TEST_2; 
-
-with AAP as (
 Select 
-t1.OrderID,t2.UnitPrice,t2.Quantity,t2.PickingCompletedWhen from Sales.Orders as t1
-left join Sales.OrderLines as t2 
-on
-t1.OrderID=t2.OrderID
-left join  Sales.Customers as t3
-on
-t1.CustomerID=t3.CustomerID
-where t1.PickingCompletedWhen is not null and t2.UnitPrice > 100 or t2.Quantity > 20)
-Select row_number() OVER (ORDER BY t1.OrderId) as nom,
-t1.OrderID,
+distinct t1.OrderID,
 convert(nvarchar,t1.OrderDate, 103) as OrderDate,
 datename(month,t1.OrderDate) as [Месяц],
 Datepart(QUARTER,t1.OrderDate) as [Квартал], 
 case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
 when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
-when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
- else 'Error' end as [1/3 Года],--увы, но иначе, как решить данный вопрос мне неведома.
-t3.CustomerName INTO #TEST_2 
+when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 else 'Error' end as [1/3 Года],
+t3.CustomerName 
 from  Sales.Orders as t1 
-left join Sales.OrderLines as t2 
+right join Sales.OrderLines as t2 
 on
 t1.OrderID=t2.OrderID
-left join  Sales.Customers as t3
+inner join Sales.Customers as t3
 on
-t1.CustomerID=t3.CustomerID
-right join AAP as t4
-on
-t1.OrderID=t4.OrderID
+t1.CustomerID=t3.CustomerID 
+where (t2.UnitPrice > 100 or t2.Quantity > 20) and t1.PickingCompletedWhen is not null
 order by
-row_number() OVER (ORDER BY t1.OrderId) asc,
+t1.OrderID,
+convert(nvarchar,t1.OrderDate, 103) asc,
+datename(month,t1.OrderDate),
 Datepart(QUARTER,t1.OrderDate) asc,
 case when Datepart(month,t1.OrderDate) in (1,2,3,4) then 1
 when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
 when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 
- else 'Error' end asc,
-t1.OrderDate asc
+else 'Error' end asc
+OFFSET (@pagenum - 1) * @pagesize rows fetch next @pagesize rows only
 
-
-SELECT TOP 100 * FROM #TEST_2
-WHERE nom  NOT between 1 AND 1000
-ORDER BY 
-nom ASC,
-OrderID ASC,
-OrderDate ASC,
-Квартал ASC,
-[1/3 Года] asc
 
 
 
