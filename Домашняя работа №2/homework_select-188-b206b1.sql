@@ -102,7 +102,7 @@ when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
 when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 else 'Error' end as [1/3 Года],
 t3.CustomerName 
 from  Sales.Orders as t1 
-right join Sales.OrderLines as t2 
+left join Sales.OrderLines as t2 
 on
 t1.OrderID=t2.OrderID
 inner join Sales.Customers as t3
@@ -140,7 +140,7 @@ when Datepart(month,t1.OrderDate) in (5,6,7,8) then 2
 when Datepart(month,t1.OrderDate) in (9,10,11,12) then 3 else 'Error' end as [1/3 Года],
 t3.CustomerName 
 from  Sales.Orders as t1 
-right join Sales.OrderLines as t2 
+left join Sales.OrderLines as t2 
 on
 t1.OrderID=t2.OrderID
 inner join Sales.Customers as t3
@@ -210,8 +210,8 @@ t2.ExpectedDeliveryDate asc
 который оформил заказ (SalespersonPerson).
 Сделать без подзапросов.
 */
-
---Имя коиента CustomerName
+--Дата продажи OrderDate
+--Имя клиента CustomerName
 --Имя сотрудника SalespersonPerson
 
 
@@ -230,6 +230,47 @@ order by
 min(t3.OrderDate) DESC
 
 
+--пробую сделать вторым вариантом (через with ties)
+--Еще раз задание:
+--Десять последних продаж (по дате продажи) с именем клиента и именем сотрудника,
+--который оформил заказ (SalespersonPerson).
+--Сделать без подзапросов.
+
+--SELECT TOP 5 WITH TIES EmpNumber,EmpName 
+--FROM Employee 
+--Order By EmpNumber DESC
+
+--Select * from Sales.Invoices
+--where CustomerID =3 
+--order by 
+--InvoiceDate asc
+--Select * from Sales.Customers
+--where CustomerID = 3
+--Select * from Sales.Orders
+--where CustomerID = 3
+--Select * from Application.People
+
+
+--что-то явно не работает в (with ties), не выдвет 10 последних продаж. (доставить группировку в order by max(t3.Orderid) asc, 
+--из расчета, что каждый новый заказа формируется с большим Id чем предыдущий) 
+
+Select top (10)  with ties t1.InvoiceID, t2.CustomerName , t4.FullName
+from Sales.Invoices as t1
+Left join Sales.Customers as t2
+on
+t1.CustomerID=t2.CustomerID
+Left join Sales.Orders as t3
+on
+t1.orderID=t3.OrderID
+and t1.CustomerID=t3.CustomerID
+and t1.CustomerPurchaseOrderNumber=t3.CustomerPurchaseOrderNumber
+inner join Application.People as t4
+on t2.PrimaryContactPersonID=t4.PersonID
+group by
+t2.CustomerName, t4.FullName,t1.InvoiceID,t1.InvoiceDate 
+order by
+min(t3.OrderDate) DESC,
+max(t3.Orderid) asc
 
 
 
