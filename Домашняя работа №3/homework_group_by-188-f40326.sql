@@ -114,7 +114,7 @@ t1.CustomerID=t2.CustomerID
 left join Sales.OrderLines as t3
 on
 t2.OrderID=t3.OrderID
-group by
+group by 
 t3.Description,
 Datepart(YEAR,t1.InvoiceDate),
 Datename(month,t1.InvoiceDate),
@@ -135,10 +135,7 @@ group by
 [Год продажи],
 [Месяц продажи],
 [Кол-во продонного товара]
-order by 
-[Наименование товара],
-[Год продажи],
-[Месяц продажи]
+
 
 
 
@@ -152,3 +149,63 @@ order by
 то этот месяц также отображался бы в результатах, но там были нули.
 */
 
+--повторяю запрос задани№3 (с нулями)
+Select 
+t3.Description as [Наименование товара],
+Datepart(YEAR,t1.InvoiceDate) as [Год продажи],
+Datename(month,t1.InvoiceDate) as [Месяц продажи], 
+t3.UnitPrice as [Общая сумма продаж за месяц],
+cast(MIN(t1.InvoiceDate) as date) as [Дата первой продажи],
+t3.Quantity as [Кол-во продонного товара] into #test_2 
+from Sales.Invoices as t1
+left join Sales.Orders as t2
+on
+t1.CustomerID=t2.CustomerID
+left join Sales.OrderLines as t3
+on
+t2.OrderID=t3.OrderID
+group by 
+t3.Description,
+Datepart(YEAR,t1.InvoiceDate),
+Datename(month,t1.InvoiceDate),
+t3.UnitPrice,
+t1.InvoiceDate,
+t3.Quantity
+
+
+Select 
+distinct [Наименование товара], 
+[Год продажи],
+[Месяц продажи], 
+sum([Общая сумма продаж за месяц]) as [Общая сумма продаж за месяц],
+min([Дата первой продажи]) [дата первой рподажи],
+[Кол-во продонного товара] as [Кол-во продонного товара]  from #test_2
+where [Кол-во продонного товара] < 50
+group by rollup
+([Наименование товара], 
+[Год продажи],
+[Месяц продажи],
+[Кол-во продонного товара])
+
+
+--повторяю запрос задани№2 (с нулями)
+
+
+Select 
+Datepart(YEAR,t1.InvoiceDate) as [Год продажи],
+Datename(month,t1.InvoiceDate) as [Месяц продажи], 
+convert(int,sum(t3.UnitPrice)) as [Общая сумма продаж за месяц] from Sales.Invoices as t1
+left join Sales.Orders as t2
+on
+t1.CustomerID=t2.CustomerID
+left join Sales.OrderLines as t3
+on
+t2.OrderID=t3.OrderID
+--where Datepart(YEAR,t1.InvoiceDate) = 2015 and Datepart(month,t1.InvoiceDate)=4 --можно включить данную опцию
+group by rollup (
+Datepart(YEAR,t1.InvoiceDate),
+Datename(month,t1.InvoiceDate))
+having sum(t3.UnitPrice) > '4600000'
+order by
+Datepart(YEAR,t1.InvoiceDate),
+Datename(month,t1.InvoiceDate)
