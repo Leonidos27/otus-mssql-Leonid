@@ -106,7 +106,7 @@ t3.Description as [Наименование товара],
 Datepart(YEAR,t1.InvoiceDate) as [Год продажи],
 Datename(month,t1.InvoiceDate) as [Месяц продажи], 
 t3.UnitPrice as [Общая сумма продаж за месяц],
-cast(MIN(t1.InvoiceDate) as date) as [Дата первой продажи],
+t1.InvoiceDate as [Дата первой продажи],
 t3.Quantity as [Кол-во продонного товара] into #test_1 from Sales.Invoices as t1
 left join Sales.Orders as t2
 on
@@ -135,10 +135,82 @@ group by
 [Год продажи],
 [Месяц продажи],
 [Кол-во продонного товара]
+order by
+[Год продажи] asc,
+[Месяц продажи] asc
 
 
+--Попытка сделать задание правильно (согласо требований)--
 
+--3. Вывести сумму продаж, дату первой продажи
+--и количество проданного по месяцам, по товарам,
+--продажи которых менее 50 ед в месяц.
+--Группировка должна быть по году,  месяцу, товару.
 
+--Вывести:
+--* Год продажи
+--* Месяц продажи
+--* Наименование товара
+--* Сумма продаж
+--* Дата первой продажи
+--* Количество проданного
+
+--Продажи смотреть в таблице Sales.Invoices и связанных таблицах.
+
+--Select 
+--t3.Description as [Наименование товара],
+--Datepart(YEAR,t1.InvoiceDate) as [Год продажи],
+--Datename(month,t1.InvoiceDate) as [Месяц продажи], 
+--sum(t3.UnitPrice) as [Общая сумма продаж за месяц],
+--min(t1.InvoiceDate) as [Дата первой продажи],
+--sum(t3.Quantity) as [Кол-во продонного товара] from Sales.Invoices as t1
+--left join Sales.Orders as t2
+--on
+--t1.CustomerID=t2.CustomerID
+--left join Sales.OrderLines as t3
+--on
+--t2.OrderID=t3.OrderID
+--group by 
+--t3.Description,
+--Datepart(YEAR,t1.InvoiceDate),
+--Datename(month,t1.InvoiceDate)
+--having (case when sum(t3.Quantity) < 50 then 1 else 0 end) = 1
+--order by
+--Datepart(YEAR,t1.InvoiceDate) asc,
+--Datename(month,t1.InvoiceDate) asc
+
+--Select * from Sales.Invoices
+--Select * from Sales.Orders
+--Select * from Sales.OrderLines
+
+--Моё решение:
+
+Select 
+t3.Description as [Наименование товара],
+Datepart(YEAR,t1.InvoiceDate) as [Год продажи],
+Datename(month,t1.InvoiceDate) as [Месяц продажи], 
+sum(t3.UnitPrice) as [Общая сумма продаж за месяц],
+min(t1.InvoiceDate) as [Дата первой продажи],
+sum(t3.Quantity) as [Кол-во продонного товара] from Sales.Invoices as t1
+left join Sales.Orders as t2
+on
+t1.CustomerID=t2.CustomerID
+and t1.OrderID=t2.OrderID
+left join Sales.OrderLines as t3
+on
+t2.OrderID=t3.OrderID
+--where sum(t3.Quantity) < 50 
+group by 
+t3.Description,
+Datepart(YEAR,t1.InvoiceDate),
+Datename(month,t1.InvoiceDate)--,
+--t3.Quantity--,
+--t3.UnitPrice 
+having sum(t3.Quantity) < 50 
+order by
+t3.Description,
+Datepart(YEAR,t1.InvoiceDate) asc,
+Datename(month,t1.InvoiceDate) asc
 
 
 -- ---------------------------------------------------------------------------
@@ -155,7 +227,7 @@ t3.Description as [Наименование товара],
 Datepart(YEAR,t1.InvoiceDate) as [Год продажи],
 Datename(month,t1.InvoiceDate) as [Месяц продажи], 
 t3.UnitPrice as [Общая сумма продаж за месяц],
-cast(MIN(t1.InvoiceDate) as date) as [Дата первой продажи],
+MIN(t1.InvoiceDate) as [Дата первой продажи],
 t3.Quantity as [Кол-во продонного товара] into #test_2 
 from Sales.Invoices as t1
 left join Sales.Orders as t2
@@ -186,6 +258,7 @@ group by rollup
 [Год продажи],
 [Месяц продажи],
 [Кол-во продонного товара])
+
 
 
 --повторяю запрос задани№2 (с нулями)
