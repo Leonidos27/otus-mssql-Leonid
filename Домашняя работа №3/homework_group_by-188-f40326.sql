@@ -185,6 +185,7 @@ order by
 
 --Моё решение:
 
+
 Select 
 t3.Description as [Наименование товара],
 Datepart(YEAR,t1.InvoiceDate) as [Год продажи],
