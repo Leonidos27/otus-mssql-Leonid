@@ -94,9 +94,6 @@ order by t1.Description
 TODO: 
 --моё решение №1
 
-Select * from Sales.CustomerTransactions
-
-
 ;with t1 as (
 Select 
 CustomerID, 
