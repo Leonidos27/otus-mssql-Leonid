@@ -32,7 +32,7 @@ USE WideWorldImporters
 
 TODO:
 
---Моё решение
+--Моё решение №1
 ;with temp1 (PersonID, FullName) as (select distinct PersonID, FullName from Application.People
 where IsSalesperson = 1) 
 Select t1.PersonID,t1.FullName from temp1 as t1
@@ -41,8 +41,13 @@ on
 t1.PersonID=t2.SalespersonPersonID
 where t2.SalespersonPersonID is null
 
+--Моё решение №2
 
-
+select distinct PersonID, FullName from Application.People as t1
+left join (select distinct SalespersonPersonID from Sales.Invoices where InvoiceDate = '20150704' ) as t2
+on
+t1.PersonID=t2.SalespersonPersonID
+where t1.IsSalesperson = 1 and t2.SalespersonPersonID is null
 
 
 /*
@@ -54,17 +59,18 @@ TODO:
 
 --Моё решение№1
 with t1 as (
-select top 10 StockItemID,Description, min(UnitPrice) as [Минимальная цена] from Sales.OrderLines
+select top 10 StockItemID AS [ИД товара],Description AS [Наименование товара], min(UnitPrice) as [Минимальная цена] from Sales.OrderLines
 group by
 StockItemID,
 Description
 order by
 min(UnitPrice) asc)
 Select * from t1
+order by [Наименование товара]
 
 --Моё решение№2
-select  distinct t1.StockItemID,t1.Description, t1.UnitPrice from Sales.OrderLines as t1
-left join (select top 10 StockItemID, Description, min(UnitPrice) as [мингимальная цена] from Sales.OrderLines
+select  distinct t1.StockItemID AS [ИД товара] ,t1.Description as [Наименование товара], t1.UnitPrice as [Минимальная цена] from Sales.OrderLines as t1
+left join (select top 10 StockItemID, Description, min(UnitPrice) as [минимальная цена] from Sales.OrderLines
 group by
 StockItemID, Description
 order by
@@ -73,7 +79,7 @@ min(UnitPrice) asc
 on
 t1.StockItemID=t2.StockItemID
 where t2.StockItemID is not null
-
+order by t1.Description
 
 
 
@@ -88,6 +94,9 @@ where t2.StockItemID is not null
 TODO: 
 --моё решение №1
 
+Select * from Sales.CustomerTransactions
+
+
 ;with t1 as (
 Select 
 CustomerID, 
@@ -98,15 +107,17 @@ from Sales.CustomerTransactions)
 --order by 
 --CustomerID asc ,
 --TransactionAmount desc)
-Select * from t1
-where rating in (1,2,3,4,5)
-
+Select  TOP 10 t1.CustomerID,t1.CustomerTransactionID,max(t1.TransactionAmount) as [Максимальный платеж] from t1
+where rating in (1)
+GROUP BY
+t1.CustomerID,t1.CustomerTransactionID
 --Моё решение №2
 
 select 
-t1.CustomerID, 
-max(t1.TransactionAmount) as [Максимальный платеж],
-t2.rating
+top 10 t1.CustomerID, 
+CustomerTransactionID,
+max(t1.TransactionAmount) as [Максимальный платеж]
+--t2.rating
 from Sales.CustomerTransactions as t1
 join (Select 
 CustomerID, 
@@ -118,10 +129,11 @@ t1.CustomerID=t2.CustomerID
 and
 t1.TransactionAmount=t2.TransactionAmount
 where 
-t1.TransactionAmount > 0 and t2.rating in (1,2,3,4,5)
+t1.TransactionAmount > 0 and t2.rating in (1)
 group by
 t1.TransactionDate,
 t1.CustomerID,
+CustomerTransactionID,
 t2.rating
 order by
 t1.CustomerID asc,
