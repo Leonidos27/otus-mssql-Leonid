@@ -163,7 +163,7 @@ t1.StockItemID as [ид товара],
 t1.StockItemName AS [название],
 t1.Brand as [брэнд],
 t1.UnitPrice AS [цена],
-row_number() over( order by t1.StockItemName asc ) as [*1],
+row_number() over( order by left(t1.StockItemName,1) asc ) as [*1],
 ROWCOUNT_BIG() as [*2],
 count((LEFT(trim(case 
 when left(t1.StockItemName,8)='"The Gu"' then REPLACE(t1.StockItemName, '"The Gu"','') 
@@ -189,8 +189,8 @@ ELSE t1.StockItemName
 end ),1) )) as [*3],
 lead(t1.StockItemID) over( order by t1.StockItemName asc ) as [*4],
 lag(t1.StockItemID) over( order by t1.StockItemName asc ) as [*5],
---lag(t1.StockItemID,2,'No_items') over( order by t1.StockItemName asc ) as [*6] туту я не понял как должно работать (в том виде, как написал я - не работает) 
-NTILE(30) over ( order by TypicalWeightPerUnit/QuantityPerOuter desc) as [*7]
+lag(t1.StockItemName,2,'No items') over( order by t1.StockItemName asc ) as [*6], --туту я не понял как должно работать (в том виде, как написал я - не работает) 
+NTILE(30) over ( order by TypicalWeightPerUnit desc) as [*7]
 from Warehouse.StockItems as t1
 
 
@@ -298,3 +298,90 @@ Description as [Название товара],
 UnitPrice as [Цена товара],
 InvoiceDate as [Дата покупки] from u1
 where Ранг_стоимости_товара in (1,2)
+
+
+-- Работан над ошибками 
+-- предпринимаю попытку полного перестроения запроса, так как то, что сделал в первый раз никак не потдается исправлению. не работает окно--
+
+--Выберите по каждому клиенту два самых дорогих товара, которые он покупал.
+--В результатах должно быть ид клиета, его название, ид товара, цена, дата покупки.
+
+Select * from Sales.Orders
+Select * from Sales.OrderLines
+order by
+OrderID asc ,
+OrderLineID
+Select * from Sales.Invoices
+Select * from Application.People
+
+
+;with t1 as (
+Select 
+DISTINCT t1.OrderLineID, 
+t2.CustomerID,
+t1.OrderID, 
+T1.StockItemID,
+T1.Description,
+t1.UnitPrice,
+t2.InvoiceDate,
+row_number() over( partition by t2.CustomerID order by t1.UnitPrice DESC  ) as [Ранг_1]
+from Sales.OrderLines AS T1
+left JOIN Sales.Invoices  AS T2 
+on
+t1.OrderID=t2.OrderID
+)
+--select * from t1 as u1
+--left join  (select PersonID, FullName from Application.People) as t3
+--on PersonID=t3.PersonID
+--LEFT JOIN (select OrderID,CustomerID from Sales.Orders) AS T4
+--ON
+--U1.OrderID =T4.OrderID
+--and t4.CustomerID=u1.CustomerID
+--where Ранг_1 in  (1, 2) and t4.CustomerID = 832
+--order by UnitPrice desc
+
+
+
+
+--Первая часть
+;with t1 as (
+Select 
+--t1.OrderID, 
+--t1.OrderLineID, 
+T1.StockItemID,
+T1.Description,
+t1.UnitPrice,
+t3.InvoiceDate,
+t3.CustomerID,
+max(t1.UnitPrice)over (order by t3.CustomerID )  as [ранг_1],
+case 
+when max(t1.UnitPrice) over (order by t3.CustomerID) = t1.UnitPrice then  1 else 0 end as Проверка
+from Sales.OrderLines AS T1
+left join Sales.Orders as t2
+on
+t1.OrderID=t2.OrderID
+left JOIN Sales.Invoices  AS T3
+on
+t1.OrderID=t3.OrderID
+and
+t2.CustomerID=t3.CustomerID
+left join Application.People as t4
+on
+t3.ContactPersonID=t4.PersonID
+where t3.CustomerID = 832
+group by
+T1.StockItemID,
+T1.Description,
+t1.UnitPrice,
+t3.InvoiceDate,
+t3.CustomerID)
+--order by UnitPrice desc
+select  * from t1
+where Проверка = 1 
+
+
+
+select PersonID, FullName from Application.People
+
+
+select * from Application.People
