@@ -439,3 +439,46 @@ where
 Агрегированный_ранг in  (12 ,21)
 --and CustomerID = 832
 
+
+--работа над ошибками от 14.01.2024
+--до изменений возвращается 941 строка
+
+;with t1 as 
+(
+Select 
+T1.StockItemID,
+t3.CustomerID,
+t1.OrderID, 
+T1.Description,
+t1.UnitPrice,
+t2.InvoiceDate, 
+t3.CustomerName, 
+concat(dense_rank() over( partition by t2.CustomerID order by t1.UnitPrice DESC ),
+row_number()  over(partition by t1.OrderID,t2.CustomerID  order by t2.CustomerID,t1.OrderID, t2.InvoiceDate desc ) ) as [Агрегированный_ранг]
+from Sales.OrderLines AS T1
+left JOIN Sales.Invoices  AS T2 
+on
+t1.OrderID=t2.OrderID
+left join Sales.Customers as t3
+on
+t2.CustomerID=t3.CustomerID
+where 
+t2.InvoiceDate is not null -- своего рода нормализация данных
+--and t3.CustomerID = 832 
+)
+select
+CustomerID, 
+CustomerName, 
+StockItemID,
+Description,
+UnitPrice,
+InvoiceDate
+from t1 
+where 
+Агрегированный_ранг in  (12 ,21)
+--and CustomerID = 832
+order by 
+CustomerID asc 
+
+--после изменений возвращается 941 строка
+--Мой комментарий, в отношении join я описал на сайте, где мы с Вами переписываемся. 
