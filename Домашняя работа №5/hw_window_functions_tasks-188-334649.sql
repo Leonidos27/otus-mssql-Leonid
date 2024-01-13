@@ -193,7 +193,22 @@ lag(t1.StockItemName,2,'No items') over( order by t1.StockItemName asc ) as [*6]
 NTILE(30) over ( order by TypicalWeightPerUnit desc) as [*7]
 from Warehouse.StockItems as t1
 
+--работа над ошибками от 12.01.2024
 
+Select 
+t1.StockItemID as [ид товара], 
+t1.StockItemName AS [название],
+t1.Brand as [брэнд],
+t1.UnitPrice AS [цена],
+row_number() over( order by left(t1.StockItemName,1) asc ) as [*1],
+--ROWCOUNT_BIG() as [*2],
+count(*) over( ) as [*2],
+count(LEFT(t1.StockItemName,1)) over ( partition by LEFT(t1.StockItemName,1) order by LEFT(t1.StockItemName,1)) as [*3], -- исправлено
+lead(t1.StockItemID) over( order by t1.StockItemName asc ) as [*4],
+lag(t1.StockItemID) over( order by t1.StockItemName asc ) as [*5],
+lag(t1.StockItemName,2,'No items') over( order by t1.StockItemName asc ) as [*6], --туту я не понял как должно работать (в том виде, как написал я - не работает) 
+NTILE(30) over ( order by TypicalWeightPerUnit desc) as [*7]
+from Warehouse.StockItems as t1
 
 
 /*
@@ -380,8 +395,47 @@ select  * from t1
 where Проверка = 1 
 
 
+--работа над ошибками от 12.01.2024
 
-select PersonID, FullName from Application.People
+--Выберите по каждому клиенту два самых дорогих товара, которые он покупал.
+--В результатах должно быть ид клиета, его название, ид товара, цена, дата покупки.
 
+;with t1 as (
+Select 
+--t1.OrderLineID, 
+T1.StockItemID,
+t2.CustomerID,
+t1.OrderID, 
+T1.Description,
+t1.UnitPrice,
+t2.InvoiceDate,
+t3.PersonID, 
+t3.FullName, 
+--row_number() over( partition by t2.CustomerID order by t1.UnitPrice DESC  ) as [Ранг_1],
+dense_rank() over( partition by t2.CustomerID order by t1.UnitPrice DESC ) as [Ранг_ценовой],
+row_number()  over(partition by t1.OrderID,t2.CustomerID  order by t2.CustomerID,t1.OrderID, t2.InvoiceDate desc ) as [Ранг_даты],
+--row_number() over( partition by t1.OrderID order by t1.UnitPrice DESC ) as [Ранг_заказ]--,
+concat(dense_rank() over( partition by t2.CustomerID order by t1.UnitPrice DESC ),row_number()  over(partition by t1.OrderID,t2.CustomerID  order by t2.CustomerID,t1.OrderID, t2.InvoiceDate desc ) ) as [Агрегированный_ранг]
+from Sales.OrderLines AS T1
+left JOIN Sales.Invoices  AS T2 
+on
+t1.OrderID=t2.OrderID
+left join Application.People as t3
+on
+t2.ContactPersonID=t3.PersonID
+where 
+t2.InvoiceDate is not null -- своего рода нормализация данных
+--and CustomerID = 832 
+)
+select
+PersonID, 
+FullName, 
+StockItemID,
+Description,
+UnitPrice,
+CustomerID
+from t1 
+where 
+Агрегированный_ранг in  (12 ,21)
+--and CustomerID = 832
 
-select * from Application.People
