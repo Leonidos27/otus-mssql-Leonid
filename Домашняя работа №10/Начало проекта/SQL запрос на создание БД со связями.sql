@@ -7,14 +7,14 @@ SET XACT_ABORT ON
 
 BEGIN TRANSACTION QUICKDBD
 
-CREATE TABLE [Клиенты] (
+CREATE TABLE [Clients] (
     [Client_Id] int  NOT NULL ,
     [family_name] varchar  NOT NULL ,
     [Name] varchar  NOT NULL ,
     [Surname] varchar  NOT NULL ,
     [Year_of_birth] date  NOT NULL ,
     [Citizenship] varchar  NOT NULL ,
-    CONSTRAINT [PK_Клиенты] PRIMARY KEY CLUSTERED (
+    CONSTRAINT [PK_Clients] PRIMARY KEY CLUSTERED (
         [Client_Id] ASC
     )
 )
@@ -58,10 +58,10 @@ CREATE TABLE [Insurance_companies_conditions] (
     )
 )
 
-ALTER TABLE [Клиенты] WITH CHECK ADD CONSTRAINT [FK_Клиенты_Client_Id] FOREIGN KEY([Client_Id])
+ALTER TABLE [Clients] WITH CHECK ADD CONSTRAINT [FK_Clients_Client_Id] FOREIGN KEY([Client_Id])
 REFERENCES [Treaty] ([Client_Id])
 
-ALTER TABLE [Клиенты] CHECK CONSTRAINT [FK_Клиенты_Client_Id]
+ALTER TABLE [Clients] CHECK CONSTRAINT [FK_Clients_Client_Id]
 
 ALTER TABLE [Employees] WITH CHECK ADD CONSTRAINT [FK_Employees_Id_Employees] FOREIGN KEY([Id_Employees])
 REFERENCES [Treaty] ([Id_Employees])

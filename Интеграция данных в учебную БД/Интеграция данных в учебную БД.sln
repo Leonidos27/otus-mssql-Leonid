@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34601.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Интеграция данных в учебную БД", "Интеграция данных в учебную БД.dtproj", "{9ABAD2E3-3B44-4305-8E93-F3C988CAFB07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ABAD2E3-3B44-4305-8E93-F3C988CAFB07}.Development|Default.ActiveCfg = Development
+		{9ABAD2E3-3B44-4305-8E93-F3C988CAFB07}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21B8F721-1ACF-4E41-918B-B0F3F0AEA28E}
+	EndGlobalSection
+EndGlobal
