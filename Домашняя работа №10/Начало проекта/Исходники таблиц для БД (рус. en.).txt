@@ -1,0 +1,85 @@
+#
+Клиенты
+------
+Клиент_Ид int 
+Фамилия строка
+Имя строка
+Отчество строка
+Год_рождения дата
+Гражданство  строка
+
+Сотрудники
+-
+Ид_сотрудника int IDENTITY
+Фамилия строка
+Имя строка
+Отчество строка
+Должность строка
+
+Договора
+-------
+Ид_договора int 
+Ид_сотрудника int
+Клиент_Ид int Pk
+страховая_сумма int
+дата_начала_действия)договора дата
+
+Вид_страхования 
+-
+Ид_вид_страхования int IDENTITY
+Вид_страхования строка
+
+Страховые_компании_условия
+-
+Ид_договора int IDENTITY
+Ид_вид_страхования int FK 
+Название_страховой_компании строка
+Город строка
+Адрес строка
+Регион строка
+
+
+
+Перевод на западный манер: 
+
+
+Clients
+-------
+Client_Id int pk FK -< Treaty.Client_Id
+family_name varchar
+Name varchar
+Surname varchar
+Year_of_birth date
+Citizenship varchar
+
+Employees
+--------
+Id_Employees int PK FK -< Treaty.Id_Employees
+family_name nvarchar
+Name nvarchar
+Surname nvarchar
+Job_title nvarchar
+
+Treaty
+-------
+Id_Treaty int FK >- Insurance_companies_conditions.Id_Treaty
+Id_Employees int
+Client_Id int 
+insurance_sum BIGINT
+contract_start_date  Date
+
+Insurance_type
+----
+ID_type_of_insurance int PK 
+Insurance_type nvarchar
+
+
+Insurance_companies_conditions
+-------
+Id_Treaty int pk
+ID_type_of_insurance int FK -< Insurance_type.ID_type_of_insurance
+Name_of_insurance_company nvarchar
+City nvarchar
+Address nvarchar
+Region nvarchar
+
