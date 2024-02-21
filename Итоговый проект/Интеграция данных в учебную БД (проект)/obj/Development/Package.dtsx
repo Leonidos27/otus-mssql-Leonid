@@ -1,0 +1,2731 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/20/2024 12:03:46 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HOME-PC"
+  DTS:CreatorName="HOME-PC\Учебный ПК"
+  DTS:DTSID="{B916B22A-CA65-42D4-B23E-0FC06F569585}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{F2B0F50C-2E49-4B75-8394-695CE0F22687}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HOME-PC.Educational_base_homework]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{57EC7EF1-4207-4B19-BD1F-23FF7A4CB57F}"
+      DTS:ObjectName="HOME-PC.Educational_base_homework">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=HOME-PC\LEONID;Initial Catalog=Educational_base_homework;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{57EC7EF1-4207-4B19-BD1F-23FF7A4CB57F}HOME-PC.Educational_base_homework;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7E06EFE5-38B9-49F9-8CE2-583C0720FB1E}"
+      DTS:ObjectName="HOME-PC\LEONID.Educational_base_homework">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=HOME-PC\LEONID;Initial Catalog=Educational_base_homework;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{7E06EFE5-38B9-49F9-8CE2-583C0720FB1E}HOME-PC\LEONID.Educational_base_homework;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Диспетчер соединений Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{EB480746-732E-491D-BC57-27D608CE9C4B}"
+      DTS:ObjectName="Диспетчер соединений Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\Исходные данные для проекта\Справочник городов.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Диспетчер соединений Excel 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{52867A03-3218-4F03-AAD1-63FC80B5D7C7}"
+      DTS:ObjectName="Диспетчер соединений Excel 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\Исходные данные для проекта\Справочник видов срахования.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Диспетчер соединений Excel 2]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{797EFA28-DD70-496A-A456-7E8F6D86FC4D}"
+      DTS:ObjectName="Диспетчер соединений Excel 2">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::FileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Диспетчер соединений Excel 3]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C78C5257-1B8E-46AB-A52F-F8DA77815EC9}"
+      DTS:ObjectName="Диспетчер соединений Excel 3">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::FileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Папка архива]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{1957EC68-4F2B-4A97-81FE-57203812053B}"
+      DTS:ObjectName="Папка архива">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="E:\Исходные данные для проекта\Папка архива" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{05E8C284-FF31-4F14-BA1F-D7946C122FA5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9091133E-66E8-4363-AB36-AE99B616A98B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::FolderPath]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FolderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">E:\Исходные данные для проекта\Папка источник\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C35C2D84-E657-438D-8ED2-F43ACE985B54}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::FolderPathTemp]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FolderPathTemp">
+      <DTS:VariableValue
+        DTS:DataType="8">E:\Исходные данные для проекта\Папка для промежуточной загрузки\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{23A7DE30-DEBD-48AE-A3CD-72A49A55700F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::FolderPath]+ @[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="8">E:\Исходные данные для проекта\Папка источник\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Merge_body"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Задача &quot;Выполнение SQL&quot;"
+      DTS:DTSID="{0ADD06A4-2867-418E-A2BC-14CB3DF012A0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Merge_body"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7E06EFE5-38B9-49F9-8CE2-583C0720FB1E}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Delete from dbo.body_temp&#xA;where [№_договора] is null&#xA;&#xA;&#xA;--Мердж body--&#xA;&#xA;;Merge dbo.body target&#xA;using &#xA;(&#xA;select &#xA;t1.[№_договора],&#xA;t1.[Фамилия],&#xA;t1.[Имя],&#xA;t1.[Отчество],&#xA;t1.[Дата_рождения],&#xA;t1.[Гражданство],&#xA;t1.[Страховая_сумма],&#xA;t1.[Дата_начала_действия_договора],&#xA;t1.[ID_страхования],&#xA;t1.[FileName],&#xA;h.dwh_id as primery_id&#xA;from dbo.body_temp  t1&#xA;join dbo.header  h&#xA;on&#xA;t1.[FileName]=h.[FileName]&#xA;Union &#xA;Select &#xA;t2.[№_договора],&#xA;t2.[Фамилия],&#xA;t2.[Имя],&#xA;t2.[Отчество],&#xA;t2.[Дата_рождения],&#xA;t2.[Гражданство],&#xA;t2.[Страховая_сумма],&#xA;t2.[Дата_начала_действия_договора],&#xA;t2.[ID_страхования],&#xA;t2.[FileName],&#xA;h1.dwh_id as primery_id&#xA;from dbo.body as t2&#xA;join dbo.header as h1&#xA;on&#xA;t2.[FileName]=h1.[FileName]&#xA;) source &#xA;on&#xA;target.[FileName]=source.[FileName]&#xA;and target.[№_договора]=source.[№_договора]&#xA;when matched &#xA;and (&#xA;target.[FileName]&lt;&gt;source.[FileName] or&#xA;target.[№_договора]&lt;&gt;source.[№_договора] or&#xA;target.[Фамилия]&lt;&gt;source.[Фамилия] or&#xA;target.[Имя]&lt;&gt;source.[Имя] or&#xA;target.[Отчество]&lt;&gt;source.[Отчество] or&#xA;target.[Дата_рождения]&lt;&gt;source.[Дата_рождения] or&#xA;target.[Гражданство]&lt;&gt;source.[Гражданство] or&#xA;target.[Страховая_сумма]&lt;&gt;source.[Страховая_сумма] or&#xA;target.[Дата_начала_действия_договора]&lt;&gt;source.[Дата_начала_действия_договора] or&#xA;target.[ID_страхования]&lt;&gt;source.[ID_страхования])&#xA;then update set&#xA;target.etl_date  =getdate(),&#xA;target.[№_договора]=source.[№_договора],&#xA;target.[Фамилия]=source.[Фамилия],&#xA;target.[Имя]=source.[Имя],&#xA;target.[Отчество]=source.[Отчество],&#xA;target.[Дата_рождения]=source.[Дата_рождения],&#xA;target.[Гражданство]=source.[Гражданство],&#xA;target.[Страховая_сумма]=source.[Страховая_сумма],&#xA;target.[Дата_начала_действия_договора]=source.[Дата_начала_действия_договора],&#xA;target.[ID_страхования]=source.[ID_страхования],&#xA;target.[FileName]=source.[FileName],&#xA;target.primery_id=source.primery_id&#xA;when not matched &#xA;then insert &#xA;(&#xA;[№_договора],&#xA;[Фамилия],&#xA;[Имя],&#xA;[Отчество],&#xA;[Дата_рождения],&#xA;[Гражданство],&#xA;[Страховая_сумма],&#xA;[Дата_начала_действия_договора],&#xA;[ID_страхования],&#xA;[FileName],&#xA;[primery_id]&#xA;)&#xA;values &#xA;(source.[№_договора], &#xA;source.[Фамилия], &#xA;source.[Имя], &#xA;source.[Отчество], &#xA;source.[Дата_рождения], &#xA;source.[Гражданство], &#xA;source.[Страховая_сумма], &#xA;source.[Дата_начала_действия_договора], &#xA;source.[ID_страхования], &#xA;source.[FileName],&#xA;source.[primery_id]);&#xA;&#xA;drop table if exists dbo.header_temp&#xA;drop table if exists dbo.body_temp " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Merge_header"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Задача &quot;Выполнение SQL&quot;"
+      DTS:DTSID="{6973E91A-CF5C-4302-8E34-9772EE83FD73}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Merge_header"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7E06EFE5-38B9-49F9-8CE2-583C0720FB1E}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="--Мердж header-----&#xA;;Merge dbo.header target&#xA;using &#xA;(&#xA;select &#xA;t1.[Company],&#xA;t1.[City],&#xA;t1.[Surname],&#xA;t1.[Name],&#xA;t1.[middle_Name],&#xA;t1.[Job_title],&#xA;t1.[FileName]&#xA;from dbo.header_temp t1&#xA;Union &#xA;Select &#xA;t2.[Company],&#xA;t2.[City],&#xA;t2.[Surname],&#xA;t2.[Name],&#xA;t2.[middle_Name],&#xA;t2.[Job_title],&#xA;t2.[FileName]&#xA;from dbo.header t2&#xA;) source &#xA;on&#xA;target.[Company]=source.[Company] and&#xA;target.[City]=source.[City] and&#xA;target.[Surname]=source.[Surname] and&#xA;target.[Name]=source.[Name] and&#xA;target.[middle_Name]=source.[middle_Name] and&#xA;target.[Job_title]=source.[Job_title] and&#xA;target.[FileName]=source.[FileName] &#xA;when matched &#xA;and (&#xA;&#xA;target.[FileName]&lt;&gt;source.[FileName] )&#xA;&#xA;then update set&#xA;target.etl_date=getdate(),&#xA;target.[Surname]=source.[Surname],&#xA;target.[Name]=source.[Name],&#xA;target.[middle_Name]=source.[middle_Name],&#xA;target.[Company]=source.[Company],&#xA;target.[Job_title]=source.[Job_title],&#xA;target.[City]=source.[City],&#xA;target.[FileName]=source.[FileName]&#xA;when not matched &#xA;then insert &#xA;(&#xA;[Company],&#xA;[City],&#xA;[Surname],&#xA;[Name],&#xA;[middle_Name],&#xA;[Job_title],&#xA;[FileName]&#xA;)&#xA;values &#xA;(source.[Company], source.[City], source.[Surname], source.[Name], source.[middle_Name], source.[Job_title], source.[FileName]);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Загрузка справочников"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Задача &quot;Выполнение SQL&quot;"
+      DTS:DTSID="{5821B1C3-2F97-4DD7-9432-A715CA563F55}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Загрузка справочников"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7E06EFE5-38B9-49F9-8CE2-583C0720FB1E}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Drop table if exists dbo.Directory_of_cities&#xA;Drop table if exists dbo.Directory_of_types_of_insurance&#xA;&#xA;CREATE TABLE [Directory_of_cities] (&#xA;    [ID] float,&#xA;    [Город] nvarchar(255),&#xA;    [Область] nvarchar(255)&#xA;)&#xA;&#xA;CREATE TABLE [Directory_of_types_of_insurance] (&#xA;    [ID] nvarchar(255),&#xA;    [Вид страхования] nvarchar(255)&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Задача &quot;Выполнение SQL&quot;"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Задача &quot;Выполнение SQL&quot;"
+      DTS:DTSID="{240132AC-C63E-4CB6-904C-DC461CC7728F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Задача &quot;Выполнение SQL&quot;"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7E06EFE5-38B9-49F9-8CE2-583C0720FB1E}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="drop table if exists dbo.header_temp&#xA;&#xA;Create table dbo.header_temp (&#xA;[dwh_id] [bigint] not null identity (1,1) primary key,&#xA;[FileName] nvarchar(300),&#xA;[Company] nvarchar(300),&#xA;[City] nvarchar(300),&#xA;[Surname] nvarchar(300),&#xA;[Name] nvarchar(300),&#xA;[middle_name] nvarchar(300),&#xA;[Job_title] nvarchar(300))&#xA;&#xA;&#xA;drop table if exists dbo.body_temp &#xA;Create table dbo.body_temp (&#xA;[dwh_id] [bigint] not null identity (1,1),&#xA;[№_договора] nvarchar(300),&#x9;&#xA;[Фамилия] nvarchar(300),&#x9;&#xA;[Имя] nvarchar(300),&#x9;&#xA;[Отчество] nvarchar(300),&#x9;&#xA;[Дата_рождения]&#x9;date,&#xA;[Гражданство] nvarchar(300),&#x9;&#xA;[Страховая_сумма] bigint,&#x9;&#xA;[Дата_начала_действия_договора]&#x9;date,&#xA;[ID_страхования] nvarchar(300),&#xA;[FileName] nvarchar(300))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="E:\Исходные данные для проекта\Папка источник"
+      DTS:DTSID="{46C02C21-20F5-49E7-B3F2-C81D4BAA53A7}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Контейнер &quot;Цикл по каждому элементу&quot;">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{6D5300B3-2FA5-45DE-AF61-B16A9526CDBE}"
+        DTS:ObjectName="{6D5300B3-2FA5-45DE-AF61-B16A9526CDBE}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="E:\Исходные данные для проекта\Папка источник" />
+            <FEFEProperty
+              FileSpec="*.xlsx" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Задача потока данных"
+          DTS:DTSID="{F288BC70-9D15-425E-A222-A44D4718FDF4}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="body_temp"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Источник &quot;Excel&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;1"
+                  description="Источник &quot;Excel&quot;"
+                  name="Источник &quot;Excel&quot;"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowset">Лист1$</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Команда SQL для выполнения."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="Переменная, содержащая команду SQL для выполнения."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Указывает используемый режим доступа к базе данных."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Сопоставление между параметрами в команде SQL и переменными."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Диспетчер соединений Excel 3]"
+                      connectionManagerRefId="Package.ConnectionManagers[Диспетчер соединений Excel 3]"
+                      description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]"
+                      name="Выход источника &quot;Excel&quot;">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[№_договора]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[№_договора]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[№_договора]"
+                          name="№_договора"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Фамилия]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Фамилия]"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Фамилия]"
+                          name="Фамилия"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Имя]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Имя]"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Имя]"
+                          name="Имя"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Отчество]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Отчество]"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Отчество]"
+                          name="Отчество"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Дата_рождения]"
+                          dataType="date"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Дата_рождения]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Дата_рождения]"
+                          name="Дата_рождения"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Гражданство]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Гражданство]"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Гражданство]"
+                          name="Гражданство"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Страховая_сумма]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Страховая_сумма]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Страховая_сумма]"
+                          name="Страховая_сумма"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Дата_начала_действия_договора]"
+                          dataType="date"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Дата_начала_действия_договора]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Дата_начала_действия_договора]"
+                          name="Дата_начала_действия_договора"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID_страхования]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[ID_страхования]"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID_страхования]"
+                          name="ID_страхования"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[№_договора]"
+                          dataType="r8"
+                          name="№_договора" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Фамилия]"
+                          dataType="wstr"
+                          length="255"
+                          name="Фамилия" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Имя]"
+                          dataType="wstr"
+                          length="255"
+                          name="Имя" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Отчество]"
+                          dataType="wstr"
+                          length="255"
+                          name="Отчество" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Дата_рождения]"
+                          dataType="date"
+                          name="Дата_рождения" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Гражданство]"
+                          dataType="wstr"
+                          length="255"
+                          name="Гражданство" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Страховая_сумма]"
+                          dataType="r8"
+                          name="Страховая_сумма" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Дата_начала_действия_договора]"
+                          dataType="date"
+                          name="Дата_начала_действия_договора" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[ID_страхования]"
+                          dataType="wstr"
+                          length="255"
+                          name="ID_страхования" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;]"
+                      isErrorOut="true"
+                      name="Вывод ошибок источника &quot;Excel&quot;">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[№_договора]"
+                          dataType="r8"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[№_договора]"
+                          name="№_договора" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Фамилия]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Фамилия]"
+                          name="Фамилия" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Имя]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Имя]"
+                          name="Имя" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Отчество]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Отчество]"
+                          name="Отчество" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Дата_рождения]"
+                          dataType="date"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Дата_рождения]"
+                          name="Дата_рождения" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Гражданство]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Гражданство]"
+                          name="Гражданство" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Страховая_сумма]"
+                          dataType="r8"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Страховая_сумма]"
+                          name="Страховая_сумма" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Дата_начала_действия_договора]"
+                          dataType="date"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Дата_начала_действия_договора]"
+                          name="Дата_начала_действия_договора" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ID_страхования]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ID_страхования]"
+                          name="ID_страхования" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+                  description="Назначение &quot;OLE DB&quot;"
+                  name="Назначение &quot;OLE DB&quot;"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowset">[dbo].[body_temp]</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Команда SQL для выполнения."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                      name="DefaultCodePage">1251</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Указывает используемый режим доступа к базе данных."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                      connectionManagerRefId="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                      description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                      errorOrTruncationOperation="Вставить"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Вход назначения &quot;OLE DB&quot;">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[№_договора]"
+                          cachedDataType="r8"
+                          cachedName="№_договора"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[№_договора]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[№_договора]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Фамилия]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Фамилия"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Фамилия]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Фамилия]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Имя]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Имя"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Имя]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Имя]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Отчество]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Отчество"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Отчество]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Отчество]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Дата_рождения]"
+                          cachedDataType="date"
+                          cachedName="Дата_рождения"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Дата_рождения]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Дата_рождения]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Гражданство]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Гражданство"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Гражданство]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Гражданство]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Страховая_сумма]"
+                          cachedDataType="r8"
+                          cachedName="Страховая_сумма"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Страховая_сумма]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Страховая_сумма]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Дата_начала_действия_договора]"
+                          cachedDataType="date"
+                          cachedName="Дата_начала_действия_договора"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Дата_начала_действия_договора]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Дата_начала_действия_договора]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[ID_страхования]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ID_страхования"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ID_страхования]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID_страхования]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[FileName]"
+                          cachedDataType="wstr"
+                          cachedName="FileName"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[FileName]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Выход производного столбца].Columns[FileName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[dwh_id]"
+                          dataType="i8"
+                          name="dwh_id" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[№_договора]"
+                          dataType="wstr"
+                          length="300"
+                          name="№_договора" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Фамилия]"
+                          dataType="wstr"
+                          length="300"
+                          name="Фамилия" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Имя]"
+                          dataType="wstr"
+                          length="300"
+                          name="Имя" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Отчество]"
+                          dataType="wstr"
+                          length="300"
+                          name="Отчество" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Дата_рождения]"
+                          dataType="dbDate"
+                          name="Дата_рождения" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Гражданство]"
+                          dataType="wstr"
+                          length="300"
+                          name="Гражданство" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Страховая_сумма]"
+                          dataType="i8"
+                          name="Страховая_сумма" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Дата_начала_действия_договора]"
+                          dataType="dbDate"
+                          name="Дата_начала_действия_договора" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ID_страхования]"
+                          dataType="wstr"
+                          length="300"
+                          name="ID_страхования" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[FileName]"
+                          dataType="wstr"
+                          length="300"
+                          name="FileName" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                      synchronousInputId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Производный столбец;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+                  description="Создает новые значения столбцов путем применения выражений к входным столбцам преобразования. Создает новые столбцы или перезаписывает существующие. Пример: объединение значений столбцов &quot;first name&quot; и &quot;last name&quot; и создание столбца &quot;full name&quot;."
+                  name="Производный столбец"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Inputs[Вход производного столбца]"
+                      description="Ввод преобразования &quot;Производный столбец&quot;"
+                      name="Вход производного столбца">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Выход производного столбца]"
+                      description="Выход по умолчанию преобразования &quot;Производный столбец&quot;"
+                      exclusionGroup="1"
+                      name="Выход производного столбца"
+                      synchronousInputId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Inputs[Вход производного столбца]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Выход производного столбца].Columns[FileName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Выход производного столбца].Columns[FileName]"
+                          name="FileName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"\\",4)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"\\",4)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Вывод ошибок производного столбца]"
+                      description="Вывод ошибок преобразования &quot;Производный столбец&quot;"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Вывод ошибок производного столбца"
+                      synchronousInputId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Inputs[Вход производного столбца]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp.Paths[Выход источника &quot;Excel&quot;]"
+                  endId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Inputs[Вход производного столбца]"
+                  name="Выход источника &quot;Excel&quot;"
+                  startId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]" />
+                <path
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp.Paths[Выход производного столбца]"
+                  endId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  name="Выход производного столбца"
+                  startId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец.Outputs[Выход производного столбца]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Задача потока данных"
+          DTS:DTSID="{0A05A04F-2C60-46C4-8296-439BE968D636}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Header_temp"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Источник &quot;Excel&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;1"
+                  description="Источник &quot;Excel&quot;"
+                  name="Источник &quot;Excel&quot;"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowset">Лист1$</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Команда SQL для выполнения."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM [Лист1$A1:A2]</property>
+                    <property
+                      dataType="System.String"
+                      description="Переменная, содержащая команду SQL для выполнения."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Указывает используемый режим доступа к базе данных."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Сопоставление между параметрами в команде SQL и переменными."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Диспетчер соединений Excel 2]"
+                      connectionManagerRefId="Package.ConnectionManagers[Диспетчер соединений Excel 2]"
+                      description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]"
+                      name="Выход источника &quot;Excel&quot;">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[№_договора]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Преобразование"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[№_договора]"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[№_договора]"
+                          name="№_договора"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[№_договора]"
+                          dataType="r8"
+                          name="№_договора" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;]"
+                      isErrorOut="true"
+                      name="Вывод ошибок источника &quot;Excel&quot;">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[№_договора]"
+                          dataType="r8"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[№_договора]"
+                          name="№_договора" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+                  description="Назначение &quot;OLE DB&quot;"
+                  name="Назначение &quot;OLE DB&quot;"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowset">[dbo].[header_temp]</property>
+                    <property
+                      dataType="System.String"
+                      description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Команда SQL для выполнения."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                      name="DefaultCodePage">1251</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Указывает используемый режим доступа к базе данных."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                      connectionManagerRefId="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                      description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                      errorOrTruncationOperation="Вставить"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Вход назначения &quot;OLE DB&quot;">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Компания]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Компания"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Company]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Компания]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Город]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Город"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[City]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Город]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Фамилия]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Фамилия"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Surname]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Фамилия]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Имя]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Имя"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Name]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Имя]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Должность]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Должность"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Job_title]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Должность]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Отчество]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Отчество"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[middle_name]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Отчество]" />
+                        <inputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[FileName]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="FileName"
+                          externalMetadataColumnId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[FileName]"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[FileName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[dwh_id]"
+                          dataType="i8"
+                          name="dwh_id" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Company]"
+                          dataType="wstr"
+                          length="300"
+                          name="Company" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[City]"
+                          dataType="wstr"
+                          length="300"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Surname]"
+                          dataType="wstr"
+                          length="300"
+                          name="Surname" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="300"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[middle_name]"
+                          dataType="wstr"
+                          length="300"
+                          name="middle_name" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Job_title]"
+                          dataType="wstr"
+                          length="300"
+                          name="Job_title" />
+                        <externalMetadataColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[FileName]"
+                          dataType="wstr"
+                          length="300"
+                          name="FileName" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                      synchronousInputId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Производный столбец;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+                  description="Создает новые значения столбцов путем применения выражений к входным столбцам преобразования. Создает новые столбцы или перезаписывает существующие. Пример: объединение значений столбцов &quot;first name&quot; и &quot;last name&quot; и создание столбца &quot;full name&quot;."
+                  name="Производный столбец"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Inputs[Вход производного столбца]"
+                      description="Ввод преобразования &quot;Производный столбец&quot;"
+                      name="Вход производного столбца">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца]"
+                      description="Выход по умолчанию преобразования &quot;Производный столбец&quot;"
+                      exclusionGroup="1"
+                      name="Выход производного столбца"
+                      synchronousInputId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Inputs[Вход производного столбца]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Компания]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Компания]"
+                          name="Компания"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"_",2)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"_",2)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Город]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Город]"
+                          name="Город"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"_",3)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"_",3)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Фамилия]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Фамилия]"
+                          name="Фамилия"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"_",4)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"_",4)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Имя]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Имя]"
+                          name="Имя"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"_",5)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"_",5)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Отчество]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Отчество]"
+                          name="Отчество"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"_",6)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"_",6)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Должность]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[Должность]"
+                          name="Должность"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"_",7)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"_",7)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[FileName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Вычисление"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца].Columns[FileName]"
+                          name="FileName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Выражение производного столбца"
+                              name="Expression">[TOKEN](@[User::FileName],"\\",4)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Понятное выражение производного столбца"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TOKEN(@[User::FileName],"\\",4)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Вывод ошибок производного столбца]"
+                      description="Вывод ошибок преобразования &quot;Производный столбец&quot;"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Вывод ошибок производного столбца"
+                      synchronousInputId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Inputs[Вход производного столбца]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Вывод ошибок производного столбца].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp.Paths[Выход источника &quot;Excel&quot;]"
+                  endId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Inputs[Вход производного столбца]"
+                  name="Выход источника &quot;Excel&quot;"
+                  startId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]" />
+                <path
+                  refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp.Paths[Выход производного столбца]"
+                  endId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  name="Выход производного столбца"
+                  startId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец.Outputs[Выход производного столбца]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Задача &quot;Файловая система&quot;"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:DelayValidation="True"
+          DTS:Description="Задача &quot;Файловая система&quot;"
+          DTS:DTSID="{FE272E00-2725-44F5-BE90-0F55169CCDDA}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Задача &quot;Файловая система&quot;"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::FileName"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="Папка архива" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;.PrecedenceConstraints[Ограничение]"
+          DTS:CreationName=""
+          DTS:DTSID="{4851C543-FE92-4033-9B4C-C1DA963674A0}"
+          DTS:From="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Ограничение"
+          DTS:To="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Контейнер &quot;Цикл по каждому элементу&quot;.PrecedenceConstraints[Ограничение 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{15783508-30B8-4F27-9650-F441294721D0}"
+          DTS:From="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Ограничение 1"
+          DTS:To="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Задача &quot;Файловая система&quot;" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{A0AA8C9A-D99A-4D1F-B601-B8A493341A40}"
+          DTS:ObjectName="{A0AA8C9A-D99A-4D1F-B601-B8A493341A40}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Справочник видов срахования"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Задача потока данных"
+      DTS:DTSID="{15C3DA7A-6C4F-428B-B5C7-A2CB53202A9E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Справочник видов срахования"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Справочник видов срахования\Directory_of_types_of_insurance"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+              description="Назначение &quot;OLE DB&quot;"
+              name="Directory_of_types_of_insurance"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[Directory_of_types_of_insurance]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                  connectionManagerRefId="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  errorOrTruncationOperation="Вставить"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Вход назначения &quot;OLE DB&quot;">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ID]"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Вид страхования]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Вид страхования"
+                      externalMetadataColumnId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Вид страхования]"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Вид страхования]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Вид страхования]"
+                      dataType="wstr"
+                      length="255"
+                      name="Вид страхования" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                  synchronousInputId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Источник &quot;Excel&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;1"
+              description="Источник &quot;Excel&quot;"
+              name="Источник &quot;Excel&quot;"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">Лист1$</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Переменная, содержащая команду SQL для выполнения."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Сопоставление между параметрами в команде SQL и переменными."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Диспетчер соединений Excel 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Диспетчер соединений Excel 1]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]"
+                  name="Выход источника &quot;Excel&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[ID]"
+                      length="255"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Вид страхования]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Вид страхования]"
+                      length="255"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Вид страхования]"
+                      name="Вид страхования"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Вид страхования]"
+                      dataType="wstr"
+                      length="255"
+                      name="Вид страхования" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;]"
+                  isErrorOut="true"
+                  name="Вывод ошибок источника &quot;Excel&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Вид страхования]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Вид страхования]"
+                      name="Вид страхования" />
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Справочник видов срахования.Paths[Выход источника &quot;Excel&quot;]"
+              endId="Package\Справочник видов срахования\Directory_of_types_of_insurance.Inputs[Вход назначения &quot;OLE DB&quot;]"
+              name="Выход источника &quot;Excel&quot;"
+              startId="Package\Справочник видов срахования\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Справочник городов"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Задача потока данных"
+      DTS:DTSID="{9871B089-94D0-4AAA-B38B-28DB72E5DE7D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Справочник городов"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Справочник городов\Directory_of_cities"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+              description="Назначение &quot;OLE DB&quot;"
+              name="Directory_of_cities"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[Directory_of_cities]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Справочник городов\Directory_of_cities.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                  connectionManagerRefId="Package.ConnectionManagers[HOME-PC\LEONID.Educational_base_homework]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  errorOrTruncationOperation="Вставить"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Вход назначения &quot;OLE DB&quot;">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Город]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Город"
+                      externalMetadataColumnId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Город]"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Город]" />
+                    <inputColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Область]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Область"
+                      externalMetadataColumnId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Область]"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Область]" />
+                    <inputColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[ID]"
+                      cachedDataType="r8"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ID]"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Город]"
+                      dataType="wstr"
+                      length="255"
+                      name="Город" />
+                    <externalMetadataColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Область]"
+                      dataType="wstr"
+                      length="255"
+                      name="Область" />
+                    <externalMetadataColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[ID]"
+                      dataType="r8"
+                      name="ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Справочник городов\Directory_of_cities.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                  synchronousInputId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Справочник городов\Directory_of_cities.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Справочник городов\Directory_of_cities.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Справочник городов\Directory_of_cities.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Справочник городов\Источник &quot;Excel&quot;"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Источник &quot;Excel&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;1"
+              description="Источник &quot;Excel&quot;"
+              name="Источник &quot;Excel&quot;"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">Лист1$</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Переменная, содержащая команду SQL для выполнения."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Сопоставление между параметрами в команде SQL и переменными."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Справочник городов\Источник &quot;Excel&quot;.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Диспетчер соединений Excel]"
+                  connectionManagerRefId="Package.ConnectionManagers[Диспетчер соединений Excel]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]"
+                  name="Выход источника &quot;Excel&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Город]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Город]"
+                      length="255"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Город]"
+                      name="Город"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Область]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Область]"
+                      length="255"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[Область]"
+                      name="Область"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[ID]"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Город]"
+                      dataType="wstr"
+                      length="255"
+                      name="Город" />
+                    <externalMetadataColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[Область]"
+                      dataType="wstr"
+                      length="255"
+                      name="Область" />
+                    <externalMetadataColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;].ExternalColumns[ID]"
+                      dataType="r8"
+                      name="ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;]"
+                  isErrorOut="true"
+                  name="Вывод ошибок источника &quot;Excel&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ID]"
+                      dataType="r8"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Город]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Город]"
+                      name="Город" />
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Область]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[Область]"
+                      name="Область" />
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Вывод ошибок источника &quot;Excel&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Справочник городов.Paths[Выход источника &quot;Excel&quot;]"
+              endId="Package\Справочник городов\Directory_of_cities.Inputs[Вход назначения &quot;OLE DB&quot;]"
+              name="Выход источника &quot;Excel&quot;"
+              startId="Package\Справочник городов\Источник &quot;Excel&quot;.Outputs[Выход источника &quot;Excel&quot;]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение]"
+      DTS:CreationName=""
+      DTS:DTSID="{D62EE4C2-74C1-4BAA-B187-94A7A9DE1111}"
+      DTS:From="Package\Справочник городов"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение"
+      DTS:To="Package\Справочник видов срахования" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3F4C143D-B6B3-4D9F-89EF-A55B1F1DAC59}"
+      DTS:From="Package\Загрузка справочников"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 1"
+      DTS:To="Package\Справочник городов" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{267BE944-FBC6-4BBC-9BD3-391C11CE1AAE}"
+      DTS:From="Package\Задача &quot;Выполнение SQL&quot;"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 2"
+      DTS:To="Package\Контейнер &quot;Цикл по каждому элементу&quot;" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{89B36662-1FB7-490F-BF6D-E6FAA159F394}"
+      DTS:From="Package\Контейнер &quot;Цикл по каждому элементу&quot;"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 3"
+      DTS:To="Package\Загрузка справочников" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{647AFC2F-64CE-4747-99D2-CF82B66663DB}"
+      DTS:From="Package\Контейнер &quot;Цикл по каждому элементу&quot;"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 4"
+      DTS:To="Package\Merge_header" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Ограничение 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{84F02683-3393-480C-86FF-9C3D17BAD506}"
+      DTS:From="Package\Merge_header"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Ограничение 5"
+      DTS:To="Package\Merge_body" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
+<!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
+<!--Пакет можно загрузить обычным образом, но прежние сведения о макете будут утеряны, и конструктор автоматически перераспределит элементы в области конструктора.-->
+<Objects
+  Version="8">
+  <!--Все приведенные ниже узлы будут содержать свойства, не влияющие на поведение среды выполнения.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Merge_body"
+          TopLeft="1192,244" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Merge_header"
+          TopLeft="1210,78" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Загрузка справочников"
+          TopLeft="58,371.857142857143" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Задача &quot;Выполнение SQL&quot;"
+          TopLeft="58.5714285714286,41.4285714285714" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp"
+          TopLeft="148.142857142857,101.428571428571" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp"
+          TopLeft="27.2857142857143,20" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Задача &quot;Файловая система&quot;"
+          TopLeft="351.714285714286,60" />
+        <EdgeLayout
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;.PrecedenceConstraints[Ограничение]"
+          TopLeft="100.285714285714,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.357142857143,39.4285714285714"
+              Start="0,0"
+              End="114.357142857143,31.9285714285714">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.7142857142857"
+                    Point2="0,19.7142857142857"
+                    Point3="4,19.7142857142857" />
+                  <mssgle:LineSegment
+                    End="110.357142857143,19.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.357142857143,19.7142857142857"
+                    Point2="114.357142857143,19.7142857142857"
+                    Point3="114.357142857143,23.7142857142857" />
+                  <mssgle:LineSegment
+                    End="114.357142857143,31.9285714285714" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;.PrecedenceConstraints[Ограничение 1]"
+          TopLeft="281.142857142857,122.428571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.5714285714287,-41.428571428571"
+              Start="0,0"
+              End="63.0714285714287,-41.428571428571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="31.2857142857143,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.2857142857143,0"
+                    Point2="35.2857142857143,0"
+                    Point3="35.2857142857143,-4" />
+                  <mssgle:LineSegment
+                    End="35.2857142857143,-37.428571428571" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.2857142857143,-37.428571428571"
+                    Point2="35.2857142857143,-41.428571428571"
+                    Point3="39.2857142857143,-41.428571428571" />
+                  <mssgle:LineSegment
+                    End="63.0714285714287,-41.428571428571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="658,216"
+          Size="658,259"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;"
+          TopLeft="434.285714285715,27.1428571428571" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Справочник видов срахования"
+          TopLeft="656.571428571428,371.428571428572" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Справочник городов"
+          TopLeft="340.714285714286,365.571428571429" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение]"
+          TopLeft="525.714285714286,389.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130.857142857143,0"
+              Start="0,0"
+              End="123.357142857143,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="123.357142857143,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 1]"
+          TopLeft="257,389.714285714286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.7142857142855,0"
+              Start="0,0"
+              End="76.2142857142855,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="76.2142857142855,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 2]"
+          TopLeft="275.571428571429,62.4285714285714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="158.714285714286,94.2142857142857"
+              Start="0,0"
+              End="151.214285714286,94.2142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="75.3571428571432,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.3571428571432,0"
+                    Point2="79.3571428571432,0"
+                    Point3="79.3571428571432,4" />
+                  <mssgle:LineSegment
+                    End="79.3571428571432,90.2142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79.3571428571432,90.2142857142857"
+                    Point2="79.3571428571432,94.2142857142857"
+                    Point3="83.3571428571432,94.2142857142857" />
+                  <mssgle:LineSegment
+                    End="151.214285714286,94.2142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 3]"
+          TopLeft="763.285714285715,286.142857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-605.785714285715,85.7142857142854"
+              Start="0,0"
+              End="-605.785714285715,78.2142857142854">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8571428571427" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.8571428571427"
+                    Point2="0,42.8571428571427"
+                    Point3="-4,42.8571428571427" />
+                  <mssgle:LineSegment
+                    End="-601.785714285715,42.8571428571427" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-601.785714285715,42.8571428571427"
+                    Point2="-605.785714285715,42.8571428571427"
+                    Point3="-605.785714285715,46.8571428571427" />
+                  <mssgle:LineSegment
+                    End="-605.785714285715,78.2142857142854" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 4]"
+          TopLeft="1092.28571428572,156.642857142857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.714285714285,-57.6428571428571"
+              Start="0,0"
+              End="110.214285714285,-57.6428571428571">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.8571428571424,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.8571428571424,0"
+                    Point2="58.8571428571424,0"
+                    Point3="58.8571428571424,-4" />
+                  <mssgle:LineSegment
+                    End="58.8571428571424,-53.6428571428571" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58.8571428571424,-53.6428571428571"
+                    Point2="58.8571428571424,-57.6428571428571"
+                    Point3="62.8571428571424,-57.6428571428571" />
+                  <mssgle:LineSegment
+                    End="110.214285714285,-57.6428571428571" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Ограничение 5]"
+          TopLeft="1285,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23,124"
+              Start="0,0"
+              End="-23,116.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58"
+                    Point2="0,62"
+                    Point3="-4,62" />
+                  <mssgle:LineSegment
+                    End="-19,62" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19,62"
+                    Point2="-23,62"
+                    Point3="-23,66" />
+                  <mssgle:LineSegment
+                    End="-23,116.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Производный столбец"
+          TopLeft="230,141" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;"
+          TopLeft="100.5,62.5" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;"
+          TopLeft="455,188" />
+        <EdgeLayout
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp.Paths[Выход производного столбца]"
+          TopLeft="424,162">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,47"
+              Start="0,0"
+              End="23.5,47">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="11.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,0"
+                    Point2="15.5,0"
+                    Point3="15.5,4" />
+                  <mssgle:LineSegment
+                    End="15.5,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.5,43"
+                    Point2="15.5,47"
+                    Point3="19.5,47" />
+                  <mssgle:LineSegment
+                    End="23.5,47" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp.Paths[Выход источника &quot;Excel&quot;]"
+          TopLeft="183,104.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="144,36.5"
+              Start="0,0"
+              End="144,29">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.25"
+                    Point2="0,18.25"
+                    Point3="4,18.25" />
+                  <mssgle:LineSegment
+                    End="140,18.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="140,18.25"
+                    Point2="144,18.25"
+                    Point3="144,22.25" />
+                  <mssgle:LineSegment
+                    End="144,29" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Источник &quot;Excel&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Контейнер &quot;Цикл по каждому элементу&quot;\body_temp\Назначение &quot;OLE DB&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;"
+          TopLeft="537.25,186" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;"
+          TopLeft="71.25,51.25" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Производный столбец"
+          TopLeft="283.75,118.75" />
+        <EdgeLayout
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp.Paths[Выход производного столбца]"
+          TopLeft="380.75,160.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="252.5,25.25"
+              Start="0,0"
+              End="252.5,17.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.625"
+                    Point2="0,12.625"
+                    Point3="4,12.625" />
+                  <mssgle:LineSegment
+                    End="248.5,12.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="248.5,12.625"
+                    Point2="252.5,12.625"
+                    Point3="252.5,16.625" />
+                  <mssgle:LineSegment
+                    End="252.5,17.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp.Paths[Выход источника &quot;Excel&quot;]"
+          TopLeft="153.75,93.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="227,25.5"
+              Start="0,0"
+              End="227,18">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.75"
+                    Point2="0,12.75"
+                    Point3="4,12.75" />
+                  <mssgle:LineSegment
+                    End="223,12.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="223,12.75"
+                    Point2="227,12.75"
+                    Point3="227,16.75" />
+                  <mssgle:LineSegment
+                    End="227,18" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Назначение &quot;OLE DB&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Контейнер &quot;Цикл по каждому элементу&quot;\Header_temp\Источник &quot;Excel&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Справочник видов срахования">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Справочник видов срахования\Источник &quot;Excel&quot;"
+          TopLeft="127,61" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Справочник видов срахования\Directory_of_types_of_insurance"
+          TopLeft="318,124" />
+        <EdgeLayout
+          Id="Package\Справочник видов срахования.Paths[Выход источника &quot;Excel&quot;]"
+          TopLeft="292,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,63"
+              Start="0,0"
+              End="18.5,63">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="9,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9,0"
+                    Point2="13,0"
+                    Point3="13,4" />
+                  <mssgle:LineSegment
+                    End="13,59" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13,59"
+                    Point2="13,63"
+                    Point3="17,63" />
+                  <mssgle:LineSegment
+                    End="18.5,63" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Справочник видов срахования\Directory_of_types_of_insurance">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Справочник видов срахования\Источник &quot;Excel&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Справочник городов">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Справочник городов\Источник &quot;Excel&quot;"
+          TopLeft="195,75" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Справочник городов\Directory_of_cities"
+          TopLeft="372,173" />
+        <EdgeLayout
+          Id="Package\Справочник городов.Paths[Выход источника &quot;Excel&quot;]"
+          TopLeft="277.5,117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.5,56"
+              Start="0,0"
+              End="179.5,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="4,28" />
+                  <mssgle:LineSegment
+                    End="175.5,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.5,28"
+                    Point2="179.5,28"
+                    Point3="179.5,32" />
+                  <mssgle:LineSegment
+                    End="179.5,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Справочник городов\Directory_of_cities">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Справочник городов\Источник &quot;Excel&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
